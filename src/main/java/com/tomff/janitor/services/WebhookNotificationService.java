@@ -7,7 +7,6 @@ import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
 import club.minnced.discord.webhook.send.WebhookMessage;
 import club.minnced.discord.webhook.send.WebhookMessageBuilder;
 import com.tomff.janitor.BookingConfirmation;
-import com.tomff.janitor.CheckAndBook;
 import com.tomff.janitor.RoomBooking;
 import com.tomff.janitor.configuration.WebhookNotificationConfiguration;
 
@@ -22,7 +21,6 @@ public class WebhookNotificationService implements NotificationService {
     private static final int COLOR_SUCCESS = 0x24A428;
 
     private final WebhookNotificationConfiguration configuration;
-    private final WebhookMessageBuilder messageBase;
     private final WebhookClient webhookClient;
 
     public WebhookNotificationService(WebhookNotificationConfiguration configuration, ScheduledExecutorService executor) {
@@ -31,8 +29,10 @@ public class WebhookNotificationService implements NotificationService {
                 .setExecutorService(executor)
                 .setWait(true)
                 .build();
+    }
 
-        this.messageBase = new WebhookMessageBuilder()
+    private WebhookMessageBuilder buildMessageBase() {
+        return new WebhookMessageBuilder()
                 .setUsername(configuration.username())
                 .setAvatarUrl(configuration.avatarUrl());
     }
@@ -55,7 +55,7 @@ public class WebhookNotificationService implements NotificationService {
                         """
                 ).build();
 
-        WebhookMessage message = messageBase
+        WebhookMessage message = buildMessageBase()
                 .addEmbeds(embed)
                 .build();
 
@@ -77,7 +77,7 @@ public class WebhookNotificationService implements NotificationService {
                         """
                 ).build();
 
-        WebhookMessage message = messageBase
+        WebhookMessage message = buildMessageBase()
                 .setContent(
                         ":rotating_light: <@&" + configuration.roleId() + ">"
                 )
@@ -98,7 +98,7 @@ public class WebhookNotificationService implements NotificationService {
                 .setDescription("Listen to them, they're dying, R2! Curse my metal body, I wasn't fast enough!")
                 .build();
 
-        WebhookMessage message = messageBase
+        WebhookMessage message = buildMessageBase()
                 .addEmbeds(embed)
                 .build();
 
@@ -117,7 +117,7 @@ public class WebhookNotificationService implements NotificationService {
                 .setDescription("This isn't the afterlife, is it? Are droids allowed here?")
                 .build();
 
-        WebhookMessage message = messageBase
+        WebhookMessage message = buildMessageBase()
                 .addEmbeds(embed)
                 .build();
 
