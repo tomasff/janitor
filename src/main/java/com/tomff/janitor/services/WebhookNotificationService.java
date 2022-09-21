@@ -50,7 +50,7 @@ public class WebhookNotificationService implements NotificationService {
                 .setTitle(new WebhookEmbed.EmbedTitle("Enabled", null))
                 .setDescription(
                         """
-                        I am C-3PO, human/cyborg relations and janitor. And you are?
+                        I am C-3PO, human/cyborg relations and janitor.
                         Anxiously waiting for room bookings...
                         """
                 ).build();
