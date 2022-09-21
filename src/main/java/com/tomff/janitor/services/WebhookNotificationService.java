@@ -47,11 +47,11 @@ public class WebhookNotificationService implements NotificationService {
 
         WebhookEmbed embed = new WebhookEmbedBuilder()
                 .setColor(COLOR_BASE)
-                .setTitle(new WebhookEmbed.EmbedTitle("Engaged", null))
+                .setTitle(new WebhookEmbed.EmbedTitle("Enabled", null))
                 .setDescription(
                         """
                         I am C-3PO, human/cyborg relations and janitor. And you are?
-                        Closely listening for open room bookings...
+                        Anxiously waiting for room bookings...
                         """
                 ).build();
 
