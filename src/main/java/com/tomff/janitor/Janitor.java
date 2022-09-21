@@ -43,6 +43,7 @@ public class Janitor {
 
         executor.scheduleAtFixedRate(
                 new CheckAndBook(
+                        executor,
                         roomBooking,
                         webhookNotification,
                         janitorConfiguration.currentVersion(),
