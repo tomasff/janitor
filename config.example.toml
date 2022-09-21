@@ -1,0 +1,14 @@
+username = ""
+password = ""
+currentVersion = ""
+roomBookingUrl = ""
+
+bookings = [
+    { reason = "reason", rooms = ["H0.64"], start = "9:00", end = "10:00", hasExternalSpeaker = false, groupSize = 4, weekDay = 1, weeks = [1] },
+]
+
+[webhook]
+roleId = ""
+url = ""
+username = ""
+avatarUrl = ""
