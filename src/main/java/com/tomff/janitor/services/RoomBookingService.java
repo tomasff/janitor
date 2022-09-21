@@ -10,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
@@ -35,10 +36,16 @@ public class RoomBookingService {
         this.roomBookingUrl = roomBookingUrl;
         this.scientiaConfig = scientiaConfig;
         this.janitorConfig = janitorConfig;
-        this.driver = new ChromeDriver();
         this.httpClient = new OkHttpClient.Builder().followRedirects(false).build();
 
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        this.driver = new ChromeDriver(
+                new ChromeOptions()
+                    .addArguments("--headless")
+        );
+
+        this.driver.manage()
+                .timeouts()
+                .implicitlyWait(Duration.ofSeconds(30));
     }
 
     public Optional<String> getRoomBookingVersion() {
