@@ -36,7 +36,11 @@ public class RoomBookingService {
         this.roomBookingUrl = roomBookingUrl;
         this.scientiaConfig = scientiaConfig;
         this.janitorConfig = janitorConfig;
-        this.httpClient = new OkHttpClient.Builder().followRedirects(false).build();
+
+        this.httpClient = new OkHttpClient.Builder()
+                .followRedirects(false)
+                .cache(null)
+                .build();
 
         this.driver = new ChromeDriver(
                 new ChromeOptions()
